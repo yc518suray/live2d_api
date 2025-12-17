@@ -1,72 +1,76 @@
 # Live2D API
 
+翻成繁體中文 by @yc518suray
+
+以下為原作者新增readme內容(還有原原作者readme內容)
+
 ### 目前的模型列表(自己修改的)
 
-potion maker的pio与tia(可换装)
+potion maker的pio與tia(可換裝)
 
 小埋
 
-埃罗芒阿老师里的和泉纱雾
+情色漫畫老師裡的和泉紗霧
 
-点兔的香风智乃(可惜没有:rabbit2::older_adult:)
+點兔的香風智乃(可惜沒有:rabbit2::older_adult:)
 
 unity娘
 
-龙女仆里的康娜
+龍女僕裡的康娜
 
-### 食用教程
+### 食用教學
 
 [Hexo博客添加live2看板娘-可换装，增删模型](https://yzs020220.github.io/posts/41158/)
 
 ## 原作者readme内容
 
-Live2D 看板娘插件 ([网页添加 Live2D 看板娘 - FGHRSH 的博客](https://www.fghrsh.net/post/123.html)) 上使用的后端 API
+Live2D 看板娘外掛 ([网页添加 Live2D 看板娘 - FGHRSH 的博客](https://www.fghrsh.net/post/123.html)) 上使用的後端 API
 
 ### 特性
 
-- 原生 PHP 开发，无需伪静态，开箱即用
-- 支持 模型、皮肤 的 顺序切换 和 随机切换
-- 支持 单模型 单皮肤 切换、多组皮肤 递归穷举
-- 支持 同分组 多个模型 或 多个路径 的 加载切换
+- 原生 PHP 開發，無需偽靜態，開箱即用
+- 支持 模型、皮膚 的 順序切換 和 隨機切換
+- 支持 單模型 單皮膚 切換、多組皮膚 遞迴窮舉
+- 支持 同分組 多個模型 或 多個路徑 的 載入切換
 
 ## 使用
 
-### 环境要求
+### 環境要求
 
 - PHP 版本 >= 5.2
-- 依赖 PHP 扩展：json
+- 依賴 PHP extension：json
 
-### 目录结构
+### 目錄結構
 
 ```shell
 │  model_list.json              // 模型列表
 │
-├─model                         // 模型路径
-│  └─GroupName                  // 模组分组
-│      └─ModelName              // 模型名称
+├─model                         // 模型路徑
+│  └─GroupName                  // 模組分組
+│      └─ModelName              // 模型名稱
 │
-├─add                           // 更新皮肤列表
-├─get                           // 获取模型配置
-├─rand                          // 随机切换模型
-├─rand_textures                 // 随机切换皮肤
-├─switch                        // 顺序切换模型
-├─switch_textures               // 顺序切换皮肤
+├─add                           // 更新皮膚列表
+├─get                           // 獲取模型配置
+├─rand                          // 隨機切換模型
+├─rand_textures                 // 隨機切換皮膚
+├─switch                        // 依序切換模型
+├─switch_textures               // 依序切換皮膚
 └─tools
         modelList.php           // 列出模型列表
-        modelTextures.php       // 列出皮肤列表
+        modelTextures.php       // 列出皮膚列表
         name-to-lower.php       // 文件名格式化
 ```
 
 ### 添加模型
 
-- 单模型 单皮肤 切换
-  - 单次加载只输出一个皮肤
-  - 皮肤放在 `textures` 文件夹，自动识别
+- 單模型 單皮膚 切換
+  - 單次載入只輸出一個皮膚
+  - 皮膚放在 `textures` 資料夾，自動識別
 
 ```shell
 │  index.json
 │  model.moc
-│  textures.cache       // 皮肤列表缓存，自动生成
+│  textures.cache       // 皮膚列表快取，自動生成
 │
 ├─motions
 │      idle_01.mtn
@@ -79,13 +83,13 @@ Live2D 看板娘插件 ([网页添加 Live2D 看板娘 - FGHRSH 的博客](https
         winter-costume.png
 ```
 
-- 单模型 多组皮肤 递归穷举
+- 單模型 多組皮膚 遞迴窮舉
   
-  - 多组皮肤 组合模型、穷举组合
+  - 多組皮膚 組合模型、窮舉組合
   
-  - 皮肤文件夹按 `texture_XX` 命名
+  - 皮膚資料夾按 `texture_XX` 命名
   
-  - 添加 `textures_order.json` 列出组合
+  - 添加 `textures_order.json` 列出組合
     
     ```shell
     │  index.json
@@ -139,8 +143,8 @@ textures.cache
 ]
 ```
 
-- 同分组 多个模型 或 多个路径 切换
-  - 修改 `model_list.json` 添加多个模型
+- 同分組 多個模型 或 多個路徑 切換
+  - 修改 `model_list.json` 添加多個模型
 
 ```shell
 │
@@ -185,19 +189,20 @@ model_list.json
 }
 ```
 
-### 接口用法
+### API用法
 
-- `/add/` - 检测 新增皮肤 并更新 缓存列表
-- `/get/?id=1-23` 获取 分组 1 的 第 23 号 皮肤
-- `/rand/?id=1` 根据 上一分组 随机切换
-- `/switch/?id=1` 根据 上一分组 顺序切换
-- `/rand_textures/?id=1-23` 根据 上一皮肤 随机切换 同分组其他皮肤
-- `/switch_textures/?id=1-23` 根据 上一皮肤 顺序切换 同分组其他皮肤
+- `/add/` - 檢測 新增皮膚 並更新 暫存列表
+- `/get/?id=1-23` 獲取 分組 1 的 第 23 號 皮膚
+- `/rand/?id=1` 根據 上一分組 隨機切換
+- `/switch/?id=1` 根據 上一分組 依序切換
+- `/rand_textures/?id=1-23` 根據 上一皮膚 隨機切換 同分組其他皮膚
+- `/switch_textures/?id=1-23` 根據 上一皮膚 順序切換 同分組其他皮膚
 
-## 版权声明
+## 版權聲明
 
-> (>▽<) 都看到这了，点个 Star 吧 ~
+> (>▽<) 都看到這了，點個 Star 吧 ~
 
-**API 内所有模型 版权均属于原作者，仅供研究学习，不得用于商业用途**  
+**API 内所有模型 版權均屬於原作者，僅供研究學習，不得用於商業用途**  
 
 MIT © FGHRSH
+
